@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>＊-42λ</title>
+<link rel="stylesheet" href="stylesheet.css">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<script type="text/javascript">
+// <![CDATA[
+var colour="#907aa9"; //  colours of drops
+var border="#c4a7e7"; // colour of border
+var speed=55; // speed of animation, lower is faster
+var size=18; // size of blocks
+var drops=34; // number of raindrops
+
+/***************************\
+* Block Rain Graphic Effect *
+*(c)2005-12 mf2fm web-design*
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+\***************************/
+var swide, shigh;
+var blox=new Array();
+var blok=new Array();
+var boddie;
+
+window.onload=function() { if (document.getElementById) {
+  var i, d, s;
+  boddie=document.createElement("div");
+  s=boddie.style;
+  s.position="fixed";
+  s.top="0px";
+  s.left="0px";
+  s.width="1px";
+  s.height="1px";
+  s.overflow="visible";
+  s.backgroundColor="transparent";
+  s.opacity="0.1";
+  document.body.appendChild(boddie);
+  set_width();
+  for (i=0; i<drops; i++) {
+    d=document.createElement("div");
+    s=d.style;
+    s.width=size+"px";
+    s.height=size+"px";
+    s.overflow="hidden";
+    s.position="absolute";
+    s.visibility="hidden";
+    s.backgroundColor=colour;
+	s.border="1px solid "+border;
+	blox[i]=-1;
+    blok[i]=d;
+	boddie.appendChild(blok[i]);
+  }
+  size+=4;
+  mainblock(0);
+}}
+
+function mainblock(r) {
+  var t, l;
+  t=4+size*Math.floor(Math.random()*(shigh-size)/size);
+  l=4+size*Math.floor(Math.random()*(swide-size)/size);
+  blok[r].style.left=l+"px";
+  blok[r].style.top=t+"px";
+  blox[r]=11;
+  blok[r].style.visibility="visible";
+  subblock(r);
+  setTimeout("mainblock("+(++r%drops)+")", speed);
+}
+
+function subblock(r) {
+  if (--blox[r]>-1) {
+    if (navigator.appName=="Microsoft Internet Explorer") blok[r].style.filter="alpha(opacity="+blox[r]*10+")";
+	else blok[r].style.opacity=blox[r]/10;
+    setTimeout("subblock("+r+")", speed*drops/12);
+  }
+  else blok[r].style.visibility="hidden";
+}
+
+window.onresize=set_width;
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)!="undefined" && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min;
+  shigh=sh_min;
+}
+// ]]>
+</script>
+
+</head>
+<body style="padding:0.1% 4%">
+
+<h1 id="headline"><a href="/" style="color: inherit;">synthesis0x42.digital</a></h1>
+
+a database of links, resources, etc.
+
+<h3 id="psa">privacy security and anonymity</h3>
+
+<div style="overflow-x:auto">
+<table>
+<tr>
+<td>guides</td>
+<td>
+https://zebracrossing.narwhalacademy.org/
+<br/>
+https://www.eff.org/pages/tools
+<br/>
+https://anonymousplanet.org/guide.html
+</td>
+</tr>
+<tr>
+    <td>vpns proxies etc</td>
+<td>https://mullvad.net/en
+<br/>
+https://getoutline.org/en-GB/</td>
+</tr>
+<tr><td>websites that have self-hosted services for those who don't want to self-host themselves</td>
+<td>
+https://lain.la
+<br/>
+https://private.coffee
+<br/>
+https://bloat.cat
+<br/>
+https://envs.net
+<br/>
+https://omaera.org
+
+</td>
+</tr>
+</table>
+</div>
+
+<h3 id="qc">free awesome quantum computing</h3>
+<div style="overflow-x:auto">
+</div>
+
+
+<h3 id="edu">misc educational</h3>
+<div style="overflow-x:auto">
+</div>
+
+
+<h3 id ="bw">buttons and webrings</h3>
+
+
+<div style="display:flex;flex-wrap:wrap">
+<a href="https://lainchan.org"><img src="https://highway.eightyeightthirty.one/badge/a2f8e44188bcf11979dce72029cc645dc8e02e7a747bf558ce88a85561c6bbc0" alt="lainchan"></a>
+
+
+<a href="https://thenewoil.org/en/"><img src="https://highway.eightyeightthirty.one/badge/842b77cce57e83a1c2d0b2629c2580c5d7e12649e52c1d9d5bc54fc8be655b02"></a>
+
+<a href="https://torproject.org"><img src="https://highway.eightyeightthirty.one/badge/ff8c3b669bc459a845f6d29f6155179106000bae1ebd4f777f1f233b7807a1e2" alt="tor"></a>
+
+<a href="https://corru.observer"><img src="https://corru.observer/8831.gif" alt="corru observer"></a>
+
+<a href="https://toastrenumeration.github.io"><img src="https://raw.githubusercontent.com/toastrenumeration/toastrenumeration.github.io/refs/heads/main/assets/images/88x31.png"></a>
+
+<a href="https://cadence.moe/blog/2020-06-06-why-you-shouldnt-trust-discord"><img src="https://highway.eightyeightthirty.one/badge/4090b76042d1831a67b406686e23a552c5e3c83ab13bb9a982a98208a37ae741" alt="discord? no way!"></a>
+
+<!--<a href="https://hrt.coffee"><img src="https://highway.eightyeightthirty.one/badge/c84999da534974507de2057a7f95437c250953bb5e1b40047e4911703594608f"></a>-->
+
+<a href="https://girlthi.ng/~thermia/"><img src="https://girlthi.ng/~thermia/img/88x31/thermia.gif" alt="thermia's button"></a>
+
+<a href="https://matrix.org"><img src="https://highway.eightyeightthirty.one/badge/07b308c52454b1314c4b84d37874399039cb9539ad641b3badbea126df7d45af" alt="matrix"></a>
+
+
+<a href="https://getmonero.org"><img src="https://highway.eightyeightthirty.one/badge/662ffacb38c7a0414a5783f68b1218e087fbd486fe57c7ed2a5d216eeca60920" alt="monero NOW"></a>
+
+</div>
+<div style="display:flex;flex-wrap:wrap">
+
+<img src="/88x31/htmldream.gif" alt="I dream in html">
+
+<img src="/88x31/cssawesome.png" alt="CSS is awesome">
+
+<img src="/88x31/handcoded.gif">
+
+<img src="/88x31/sameshit.gif">
+
+<img src="/88x31/void.png">
+<img src="/88x31/testedonff.gif" alt="tested on firefox">
+
+<img src="/88x31/button-milktea.gif" alt="milk tea NOW!">
+
+<img src="/88x31/transgf.png">
+</div>
+
+
+<!--<a href='https://webring.dinhe.net/prev/https://synthesis0x42.digital'>[prev]</a> <i> Retronauts Webring </i><a href='https://webring.dinhe.net/next/https://synthesis0x42.digital'>[next]</a>
+<p>-->
+<div style="display: flex; justify-content: center;">
+<a href="https://stellophiliac.github.io/roboring"><code style="color:#ebbcba">/roboring/</code></a></div>
+<div style="display: flex; justify-content: center;">
+<a href="https://stellophiliac.github.io/roboring/0x42/previous" style="color:#31748f">← prev</a>|<a href="https://stellophiliac.github.io/roboring/0x42/next" style="color:#31748f">next →</a></div>
+
+
+
+<p>
+<div style="display:flex; justify-content:space-evenly; font-weight:bold">
+    <a href="/">home</a>
+    <a href="/">layer00</a> <!-- digital bible -->
+    <a href="/links.html">links</a>
+    <a href="/connect.html">connect</a>
+</div>
+</p>
+
+</body>
+
+</html>  

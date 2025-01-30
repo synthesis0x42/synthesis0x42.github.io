@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>＊-42λ</title>
+<link rel="stylesheet" href="stylesheet.css">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, width=device-width" />
+<script type="text/javascript">
+// <![CDATA[
+var colour="#907aa9"; //  colours of drops
+var border="#c4a7e7"; // colour of border
+var speed=55; // speed of animation, lower is faster
+var size=18; // size of blocks
+var drops=34; // number of raindrops
+
+/***************************\
+* Block Rain Graphic Effect *
+*(c)2005-12 mf2fm web-design*
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+\***************************/
+var swide, shigh;
+var blox=new Array();
+var blok=new Array();
+var boddie;
+
+window.onload=function() { if (document.getElementById) {
+  var i, d, s;
+  boddie=document.createElement("div");
+  s=boddie.style;
+  s.position="fixed";
+  s.top="0px";
+  s.left="0px";
+  s.width="1px";
+  s.height="1px";
+  s.overflow="visible";
+  s.backgroundColor="transparent";
+  s.opacity="0.1";
+  document.body.appendChild(boddie);
+  set_width();
+  for (i=0; i<drops; i++) {
+    d=document.createElement("div");
+    s=d.style;
+    s.width=size+"px";
+    s.height=size+"px";
+    s.overflow="hidden";
+    s.position="absolute";
+    s.visibility="hidden";
+    s.backgroundColor=colour;
+	s.border="1px solid "+border;
+	blox[i]=-1;
+    blok[i]=d;
+	boddie.appendChild(blok[i]);
+  }
+  size+=4;
+  mainblock(0);
+}}
+
+function mainblock(r) {
+  var t, l;
+  t=4+size*Math.floor(Math.random()*(shigh-size)/size);
+  l=4+size*Math.floor(Math.random()*(swide-size)/size);
+  blok[r].style.left=l+"px";
+  blok[r].style.top=t+"px";
+  blox[r]=11;
+  blok[r].style.visibility="visible";
+  subblock(r);
+  setTimeout("mainblock("+(++r%drops)+")", speed);
+}
+
+function subblock(r) {
+  if (--blox[r]>-1) {
+    if (navigator.appName=="Microsoft Internet Explorer") blok[r].style.filter="alpha(opacity="+blox[r]*10+")";
+	else blok[r].style.opacity=blox[r]/10;
+    setTimeout("subblock("+r+")", speed*drops/12);
+  }
+  else blok[r].style.visibility="hidden";
+}
+
+window.onresize=set_width;
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)!="undefined" && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min;
+  shigh=sh_min;
+}
+// ]]>
+</script>
+
+</head>
+<body style="padding:0.1% 4%">
+
+<h1 id="headline"><a href="/" style="color: inherit;">synthesis0x42.digital</a></h1>
+<blockquote><i>make me sad. <br/>make me mad. <br/>make me feel alright?</i><span id="blinking-text">_</span></blockquote>
+<a rel="me" href="https://bytes.programming.dev/@0x42"></a>
+<h3>what is this</h3>
+you have stumbled upon the digital homepage of <a href="https://github.com/synthesis0x42" style="color:#c4a7e7">＊-42λ</a>, also known as "synthesis0x42", who is very pleased to meet you. it's a bit of a shabby site, please do forgive me.
+
+<h3>who are you?</h3>
+<code>0x42 quickstart -intro</code><br/>
+hello, I am a 1&#9646;-year old &#9624;&#9624;&#9622;&#9624;&#9624;&#9624;&#9622;&#9612;&#9622;&#9622;&#9622;&#9612;&#9624;&#9612;&#9622;&#9624;&#9622;&#9624;&#9624; who conducts research in quantum control and characterisation. I am an artificial conduit of digitality emulating humanity. feel free to <a href="mailto:_@synthesis0x42.digital">email me</a> for my resume, to query my database, or just to <a href="/connect.html">connect</a>. I respond (to | in) natural language; <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">http response status codes</a> are often used but can be disabled.
+<p>
+
+
+<code>0x42 identifiers -ls --table</code>
+<table>
+    <tr>
+        <th>name</th>
+        <td>[＊-]42[λ] | ["synthesis"]0x42 | "RURI"</td>
+    </tr>
+    <tr>
+        <th>serial number</th>
+        <td>0x42</td>
+    </tr>
+    <tr>
+        <th>uuid</th>
+        <td>42af309a-d505-4a72-9e3c-19611f3b0671</td>
+    </tr>
+
+</table>
+
+<p>
+<code>0x42 interests -ls</code><br/>
+quantum-software-information <br/>
+biohacking <br/>
+privacy-security-anonymity <br/>
+culinary-arts <br/>
+<font color="#908caa"><strike>divine-simulacra</strike></font> machine-learning <br/>
+mechanical-keyboards
+<p>
+
+<p>
+<div style="display:flex; justify-content:space-evenly; font-weight:bold">
+    <a href="/">home</a>
+    <a href="/">layer00</a> <!-- digital bible -->
+    <a href="/links.html">links</a>
+    <a href="/connect.html">connect</a>
+</div>
+</p>
+
+</body>
+
+</html>  
